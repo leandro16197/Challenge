@@ -1,8 +1,4 @@
 <x-guest-layout>
-<<<<<<< HEAD
-=======
-    <!-- Session Status -->
->>>>>>> f7ce9542c7d24e9ef74ada78f0cf3d8fae0bfe31
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('login') }}">

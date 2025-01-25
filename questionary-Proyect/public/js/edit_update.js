@@ -271,21 +271,11 @@ $(document).ready(function () {
     $('body').on('click', '#guardar-cambios', function () {
         var generoId = $('#genero-id').val();
         var generoNombre = $('#genero-name').val();
-<<<<<<< HEAD
-=======
-
-
->>>>>>> f7ce9542c7d24e9ef74ada78f0cf3d8fae0bfe31
         if (!generoNombre) {
             alert('Por favor, ingresa un nombre para el género');
             return;
         }
-<<<<<<< HEAD
-        fetch('/api/generos/modificar' + generoId, {
-=======
-
-        fetch('/api/generos/' + generoId, {
->>>>>>> f7ce9542c7d24e9ef74ada78f0cf3d8fae0bfe31
+        fetch('/api/generos/modificar/' + generoId, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -303,12 +293,6 @@ $(document).ready(function () {
             .catch(error => {
                 console.log('Error al actualizar el género:', error);
             });
-<<<<<<< HEAD
-=======
-        
-
-
->>>>>>> f7ce9542c7d24e9ef74ada78f0cf3d8fae0bfe31
 
     });
 

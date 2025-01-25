@@ -28,6 +28,9 @@
             <li class="nav-item">
               <a class="nav-link text-white px-3 py-2 rounded hover-bg-light" href="/home">Game</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link text-white px-3 py-2 rounded hover-bg-light" href="/users">Usuarios</a>
+            </li>
           </ul>
         </div>
         <!-- Profile and Dropdown (hidden on small screens) -->

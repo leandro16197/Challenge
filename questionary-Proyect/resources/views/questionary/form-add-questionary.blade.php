@@ -106,21 +106,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
-<<<<<<< HEAD
                 <form  enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" id="genero-id">
                     <div class="form-group mb-3">
                         <label for="genero-name">Nombre del Género</label>
                         <input type="text" id="genero-name" class="form-control" required>
-=======
-                <form>
-                    @csrf
-                    <input type="hidden" id="genero-id">
-                    <div class="form-group">
-                        <label for="genero-name">Nombre del Género</label>
-                        <input type="text" id="genero-name" class="form-control">
->>>>>>> f7ce9542c7d24e9ef74ada78f0cf3d8fae0bfe31
                     </div>
                 </form>
             </div>
@@ -141,11 +132,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
-<<<<<<< HEAD
-
-=======
-                <!-- El contenido de la pregunta de eliminación se cargará aquí -->
->>>>>>> f7ce9542c7d24e9ef74ada78f0cf3d8fae0bfe31
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -162,7 +148,6 @@
 <script src="{{ asset('js/edit_update.js') }}"></script>
 @endpush
 <script>
-<<<<<<< HEAD
     document.getElementById('addGeneroForm').addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -196,41 +181,6 @@
             })
             .catch(error => console.error('Error:', error));
     });
-=======
-    document.getElementById('addGeneroForm').addEventListener('submit', function (event) {
-    event.preventDefault();
-
-    const formData = new FormData(this);
-
-    fetch('api/generos', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json', // Aceptamos JSON como respuesta
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Solo si usas Laravel y necesitas CSRF
-        },
-        body: formData, // Pasamos el FormData directamente
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-
-        if (data.status == 201) {
-            if (data.genero && data.genero.id && data.genero.name) {
-                const select = document.getElementById('genero_id');
-                const newOption = document.createElement('option');
-                newOption.value = data.genero.id;
-                newOption.textContent = data.genero.name;
-                select.appendChild(newOption);
-            } else {
-                console.log('Error: Los datos del género no están completos', data);
-            }
-        } else {
-            console.log('Error al agregar género:', data);
-        }
-    })
-    .catch(error => console.error('Error:', error));
-});
->>>>>>> f7ce9542c7d24e9ef74ada78f0cf3d8fae0bfe31
 
 
 
@@ -253,9 +203,6 @@
             })
             .catch(error => console.error('Error al cargar los géneros:', error));
     });
-<<<<<<< HEAD
 
 
-=======
->>>>>>> f7ce9542c7d24e9ef74ada78f0cf3d8fae0bfe31
 </script>

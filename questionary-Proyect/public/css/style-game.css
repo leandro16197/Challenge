@@ -150,7 +150,7 @@ body {
 
 /* Efecto hover en las opciones de respuesta */
 .answer-option:hover {
-  background-color: #f0f0f0;
+  background-color: #22212163;
 }
 
 /* Efecto active (al hacer clic) en las opciones de respuesta */
@@ -315,7 +315,7 @@ body {
 }
 
 .dataTables_wrapper {
-  background-color: #4c6b8aa1;
+  background-color: #3f2264a1;
   color: white !important;
 }
 
@@ -385,10 +385,13 @@ body {
       flex-direction: column; /* Los bloques se apilarán verticalmente */
   }
   .contenedor__principal{
-    margin-bottom: 10%;
+    margin-bottom: 30%;
   }
   .form-questionary {
       flex: 1 1 100%; /* Cada bloque tomará el 100% del ancho */
+  }
+  .footer-style {
+    margin-top: 50px !important;
   }
 }
 #sidebarOffcanvas .nav-link:hover {
@@ -410,7 +413,7 @@ body {
 .footer-style {
   position: relative !important; 
   bottom: 0 !important;
-  margin-top: 15px !important;
+  margin-top: 150px !important;
   width: 100% !important;
 }
 .modal-dialog {
@@ -462,9 +465,12 @@ body {
  .botones-modal-vida{
   margin-right: 20% !important;
  }
+ .container {
+  margin-top: 10% !important;
+}
 }
 .container {
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 .style-container-market {
@@ -520,6 +526,9 @@ body {
   .form-check-label {
       font-size: 0.9rem;
   }
+  .container {
+    margin-top: 10% !important;
+  }
 }
 
 .vida-radio {
@@ -556,4 +565,12 @@ body {
 }
 .login-style{
   width: 300px !important;
+}
+.table-dataTable-ranking{
+  color:white !important;
+}
+.selected {
+  background-color: green;
+  color: white;
+  border: 2px solid green;
 }

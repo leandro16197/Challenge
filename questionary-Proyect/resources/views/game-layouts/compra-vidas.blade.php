@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> f7ce9542c7d24e9ef74ada78f0cf3d8fae0bfe31
 @extends('questionary.game-index')
 
 @section('title', 'Market')

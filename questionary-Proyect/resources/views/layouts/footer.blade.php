@@ -1,15 +1,29 @@
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3">
-    <div class="col-md-4 d-flex align-items-center">
-      <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-        <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
-      </a>
-      <span class="texto-footer mb-3 mb-md-0 text-body-secondary">&copy; 2024 Company, Inc</span>
+<div class="footer">
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3  ">
+    <div class="lista_contactos">
+      <label for="" class="contacto-texto">Contacto</label>
+      <ul class="nav justify-content-center list-unstyled d-flex">
+        <!-- LinkedIn Icon -->
+        <li class="ms-3">
+          <a href="https://linkedin.com/in/leandroovejero" target="_blank">
+            <i class="bi bi-linkedin" style="font-size: 24px;"></i>
+          </a>
+        </li>
+
+        <!-- GitHub Icon -->
+        <li class="ms-3">
+          <a href="https://github.com/leandro16197/questionary" target="_blank">
+            <i class="bi bi-github" style="font-size: 24px;"></i>
+          </a>
+        </li>
+
+        <!-- Portfolio Icon -->
+        <li class="ms-3">
+          <a href="https://leandro16197.github.io/" target="_blank">
+            <i class="bi bi-person" style="font-size: 24px;"></i>
+          </a>
+        </li>
+      </ul>
     </div>
-
-    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
-      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
-      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
-    </ul>
   </footer>
-
+</div>

@@ -26,7 +26,7 @@ class Responses extends Seeder
             ['question_id' => 2, 'response' => '1950', 'is_correct' => 0],
 
             // Pregunta 3
-            ['question_id' => 3, 'response' => '56', 'is_correct' => 0],
+            ['question_id' => 3, 'response' => '100', 'is_correct' => 0],
             ['question_id' => 3, 'response' => '56', 'is_correct' => 1],
             ['question_id' => 3, 'response' => '49', 'is_correct' => 0],
             ['question_id' => 3, 'response' => '32', 'is_correct' => 0],

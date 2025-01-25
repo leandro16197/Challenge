@@ -14,9 +14,9 @@
     </div>
     @else
     <div class="mt-3">
-      <span class="badge bg-success">
-        <i class="fa-solid fa-heart me-2"></i> Vidas: 5
-      </span>
+      <a  href="/market"  aria-current="page" class="badge bg-success">
+        <i class="fa-solid fa-heart me-2"></i> Comparar
+    </a>
     </div>
     @endif
     @else

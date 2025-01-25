@@ -84,14 +84,11 @@
         </a>
       </li>
       <li>
-<<<<<<< HEAD
         <a href="/market" class="nav-link text-white" aria-label="Ir al mercado">
           <i class="fa-solid fa-cart-shopping me-2"></i> Comprar
         </a>
       </li>
       <li>
-=======
->>>>>>> f7ce9542c7d24e9ef74ada78f0cf3d8fae0bfe31
         <a href="/profile/jugador" class="nav-link text-white">
           <i class="fa-solid fa-user me-2"></i> Perfil
         </a>

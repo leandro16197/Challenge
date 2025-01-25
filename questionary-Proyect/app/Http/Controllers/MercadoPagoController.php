@@ -8,7 +8,6 @@ use MercadoPago\MercadoPagoConfig;
 use MercadoPago\Client\Preference\PreferenceClient;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-use DragonCode\Contracts\Cashier\Config\Payment;
 
 class MercadoPagoController extends Controller
 {

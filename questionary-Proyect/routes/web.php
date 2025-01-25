@@ -7,6 +7,7 @@ use App\Http\Controllers\QuestionaryController;
 use App\Http\Controllers\LifeController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\MercadoPagoController;
+use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -43,20 +44,16 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile/jugador', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile/jugador', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('/restart-game', [GameController::class, 'restartGame'])->name('restart.game');
-
-
     Route::post('/create-preference', [MercadoPagoController::class, 'createPreference']);
-    
     Route::get('/success', [PagoController::class, 'success'])->name('success');
-    
     Route::get('/failure', [PagoController::class, 'failure'])->name('failure');
-    
     Route::get('/pending', [PagoController::class, 'pending'])->name('pending');
-
     Route::post('/mercadopago/webhook', [MercadoPagoController::class, 'webhook']);
     Route::get('/market',[LifeController::class,'getLife'])->name('vidas.get');
-
-    
+    Route::get('/users',[UsuariosController::class,'index'])->name('usuarios.get');
+    Route::get('/users-list',[UsuariosController::class,'list'])->name('usuarios.list');
+    Route::delete('/delete-user/{id}',[UsuariosController::class,'delete_User']);
+    Route::put('/modificar-user/{id}',[UsuariosController::class,'update_rol']);
 });
 
 require __DIR__ . '/auth.php';

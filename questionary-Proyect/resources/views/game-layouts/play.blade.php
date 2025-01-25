@@ -9,7 +9,7 @@
 
         <!-- Pregunta -->
         <div class="question text-center mb-4">
-        <img src="{{ asset($question->image) }}" class="img-question-play" alt="">
+        <img src="{{asset($question->image)}}" class="img-question-play" alt="">
             <h2>{{ $question->question }}</h2>
         </div>
 
@@ -51,12 +51,12 @@
             <div class="modal-body text-center" id="modal-results">
                 <!-- Los resultados se insertarán aquí -->
                 <p class="fs-4">¡Excelente trabajo!</p>
-                <p class="fs-5">Respuestas correctas: <span id="correctas-count">0 </span></p>
-                <p class="fs-5">Respuestas incorrectas: <span id="incorrectas-count">0</span></p>
+                <p class="fs-5 respuesta">Respuestas correctas: <span id="correctas-count">0</span></p>
+                <p class="fs-5" style="margin-top: 10px;">Respuestas incorrectas: <span id="incorrectas-count">0</span></p>
             </div>
             <div class="modal-footer d-flex justify-content-between">
-                <button type="button" class="btn btn-outline-success" id="restartGameBtn replayBtn">Volver a jugar</button>
-                <button type="button" class="btn btn-outline-info" id="rankingBtn">Ir al Ranking</button>
+                <button type="button" class="btn btn-success" id="restartGameBtn replayBtn">Volver a jugar</button>
+                <button type="button" class="btn btn-info" id="rankingBtn">Ir al Ranking</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>
@@ -91,7 +91,11 @@
   </div>
 </div>
 
-
+<style>
+    p{
+        margin-left: 10px;
+    }
+</style>
 
 @endsection
 
@@ -102,11 +106,11 @@ document.addEventListener("DOMContentLoaded", function() {
     let respuestaCount = 0;
     let vidas = {{ $vidas->vidas }}; 
 
-    // Función para deshabilitar las respuestas
+
     function disableAnswers() {
         answerLabels.forEach(label => {
-            label.style.pointerEvents = 'none';  // Deshabilita el clic
-            label.style.backgroundColor = 'gray'; // Cambiar color para indicar que está deshabilitado
+            label.style.pointerEvents = 'none';  
+            label.style.backgroundColor = 'gray'; 
         });
 
         const inputs = document.querySelectorAll('.form-check-input');
@@ -115,7 +119,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Restablecer el estado de las preguntas
     function resetQuestionState() {
         answerLabels.forEach(label => {
             label.style.backgroundColor = '';
@@ -218,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(data => {
                 console.log('Respuestas del servidor:', data);
 
-                // Mostrar los resultados en el modal
+               
                 if (data.correctas !== undefined && data.incorrectas !== undefined) {
                     // Actualizar el contenido del modal
                     document.getElementById('modal-results').innerHTML = `
@@ -227,7 +230,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 `;
                     // Inicializar el modal y mostrarlo
                     const myModal = new bootstrap.Modal(document.getElementById('resultModal'), {
-                        keyboard: false // Esto es opcional, para desactivar el cierre al presionar ESC
+                        keyboard: false 
                     });
                     myModal.show();
                 }
@@ -238,7 +241,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
     }
 
-    // Función para obtener una nueva pregunta
+
     function fetchNewQuestion() {
         fetch("{{ route('getQuestion') }}", {
                 method: "GET",

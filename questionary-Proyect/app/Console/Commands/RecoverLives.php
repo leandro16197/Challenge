@@ -20,12 +20,12 @@ class RecoverLives extends Command
         foreach ($vidas as $vida) {
             $this->info("Revisando vida de usuario ID: {$vida->user_id}, Vidas actuales: {$vida->vidas}");
 
-            // Verifica si last_updated es null
+
             if (is_null($vida->last_updated)) {
                 $this->info("last_updated es null para el usuario ID: {$vida->user_id}. Actualizando ahora.");
                 $vida->last_updated = $now;
                 $vida->save();
-                continue; // Salta al siguiente usuario
+                continue; 
             }
 
             if ($vida->vidas < $vida->max_vidas) {
