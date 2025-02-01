@@ -3,14 +3,14 @@ version: '3'
 services:
   mysql:
     image: 'mysql:8.0'
-    container_name: mysql-questionary
+    container_name: mysql-challenge
     environment:
       - MYSQL_ROOT_PASSWORD=secret
       - MYSQL_USER=bn_laravel
       - MYSQL_PASSWORD=secret
       - MYSQL_DATABASE=bitnami_laravel
     ports:
-      - "3307:3306" 
+      - "3308:3306" 
     volumes:
       - mysql_data:/var/lib/mysql  
     networks:
@@ -18,7 +18,7 @@ services:
 
   app:
     image: 'bitnami/laravel:latest'
-    container_name: laravel-questionary
+    container_name: laravel-challenge
     ports:
       - '8000:8000'
     environment:
@@ -30,7 +30,7 @@ services:
       - BITNAMI_APP_USER=1000 
       - BITNAMI_APP_GROUP=1000 
     volumes:
-      - ./questionary-Proyect:/app
+      - ./challenge:/app
     networks:
       - laravel_network
     depends_on:

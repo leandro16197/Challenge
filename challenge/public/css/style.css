@@ -1,0 +1,170 @@
+body {
+    background: url('/img/fondo.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-color: #8f8d8d !important;
+}
+/* inicio Home*/
+
+
+/*Fin Home*/
+
+/*Nav*/
+.navbar{
+    background-color: #1d1e1f !important;
+}
+.navbar-brand{
+    font-size: 30px !important;
+}
+.navbar-nav .nav-link {
+    font-size: 25px !important;
+    padding-left: 20px !important; 
+    padding-right: 20px !important; 
+}
+@media (max-width: 768px) {
+
+    .navbar-brand{
+        font-size: 20px !important;
+    }
+    .navbar-nav .nav-link {
+        font-size: 15px !important;
+ 
+    }
+}
+.dropdown-menu{
+   background-color: #363a3f !important;
+}
+.dropdown-item{
+    color: white !important;
+}
+.dropdown-item:hover {
+    background-color: transparent !important;  
+    color: white !important; 
+    text-decoration: none !important; 
+}
+/*Fin Nav*/
+/*Tabla inicio*/
+.tabla-evento {
+    margin: 2%;
+    background-color: #cfcfcfbe;
+    border-radius: 20px;
+}
+.tabla-evento {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.774); 
+    padding: 15px;
+}
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    background-color: #cfcfcfbe !important;
+    padding: 12px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.table th {
+    background-color: #ffffff;
+    color: #000000cb;
+    font-size: 16px;
+}
+
+.table td {
+    background-color: #ffffff;
+    color: #1a1b1d;
+    font-size: 14px;
+}
+
+.acciones button {
+    background-color: #007bff;
+    border: none;
+    padding: 8px 15px;
+    color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.acciones button:hover {
+    background-color: #0056b3;
+}
+
+.tabla-evento table tr:nth-child(even) td {
+    background-color: #f2f2f2;
+}
+
+@media (max-width: 768px) {
+    .tabla-evento {
+        margin: 15px;
+        padding: 5px;
+    }
+
+    .table th, .table td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .acciones button {
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .table th {
+        font-size: 10px;
+        padding: 6px;
+    }
+    .table td{
+        font-size: 11px;
+    }
+    .acciones button {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+}
+
+
+/*Fin tabla*/
+
+/*Inicio Modal*/
+.modal-header-style{
+    background-color: #b62222dc !important;
+}
+.modal-content {
+    border-radius: 10px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    background-color: #28a745; 
+    color: white;
+    font-weight: bold;
+    border-radius: 10px 10px 0 0; 
+}
+
+.modal-body {
+    font-size: 1.1em; 
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.modal-footer button {
+    padding: 10px 20px; 
+}
+
+@media (max-width: 768px) {
+    .modal-dialog {
+        max-width: 90%; 
+    }
+}
+/*Fin Modal*/
+/*Inicio card Eventos*/
+.card{
+    background-color: #e2dfdf !important;
+}
+.list-group-item{
+    background-color:#e2dfdf !important ;
+    color: #222423;
+}
