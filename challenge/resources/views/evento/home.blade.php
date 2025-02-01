@@ -14,7 +14,7 @@
 
 </head>
 
-<body class="body-style font-sans antialiased">
+<body class="body-style font-sans antialiased" style="background: url('{{ Storage::url((new \App\Http\Controllers\AdminController)->getBackground()) }}') no-repeat center center fixed; background-size: cover;">
     @include('evento.nav-bar')
     <div class="container">
         <div class="clima">

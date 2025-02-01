@@ -3,7 +3,7 @@
 @section('content')
 <div class="container container-form">
     <h2 class="mb-4 text-center">Agregar Evento</h2>
-    <form method="POST" action="{{ route('evento.store') }}">
+    <form method="POST" action="{{ route('admin.store') }}">
         @csrf
         <div class="row">
             <div class="col-md-6 mb-3">

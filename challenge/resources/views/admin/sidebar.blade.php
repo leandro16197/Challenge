@@ -17,12 +17,12 @@
                     </a>
                 </li>              
                 <li class="nav-item">
-                    <a class="sidebar-li-text nav-link text-white" href="/administracion">
+                    <a class="sidebar-li-text nav-link text-white" href="{{ route('admin.admin') }}">
                         <i class="fas fa-calendar-alt"></i> Eventos
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="sidebar-li-text nav-link text-white" href="/">
+                    <a class="sidebar-li-text nav-link text-white"  href="{{ route('admin.config') }}">
                         <i class="fas fa-cogs"></i> Configuración
                     </a>
                 </li> 

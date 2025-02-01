@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\eventoModel;
+use App\Models\FondoIm;
+use App\Models\imgModel;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -11,13 +13,12 @@ class AdminController extends Controller
    {
       $evento = eventoModel::all();
       foreach ($evento as $eventoItem) {
-          $eventoItem->fecha_evento = \Carbon\Carbon::parse($eventoItem->fecha_evento)->format('d/m/y');
+         $eventoItem->fecha_evento = \Carbon\Carbon::parse($eventoItem->fecha_evento)->format('d/m/y');
       }
 
       return view('admin.admin', [
-          'eventos' => $evento
+         'eventos' => $evento
       ]);
-      
    }
 
    public function update(Request $request, $id)
@@ -83,6 +84,33 @@ class AdminController extends Controller
       ]);
 
       return redirect()->back()->with('success', 'Evento Eliminado correctamente.');
+   }
 
+   public function config(Request $request)
+   {
+      return view('admin.admin-config');
+   }
+   public function addImgBackground(Request $request)
+   {
+      $request->validate([
+         'backgroundImage' => 'required|image|mimes:jpg,jpeg,png,gif',
+      ]);
+
+      if ($request->hasFile('backgroundImage')) {
+         $file = $request->file('backgroundImage');
+         $path = $file->store('backgrounds', 'public');
+         $img=imgModel::create([
+            'imagen_path'=>$path,
+         ]);
+
+         return redirect()->back()->with('success', 'Fondo Actualizado.');
+      }
+      
+    return redirect()->back()->with('error', 'No se actualizó.');
+   }
+
+   public function getBackground(){
+      $background = imgModel::latest()->first();
+      return $background ? $background->imagen_path : 'img/fondo.jpg';
    }
 }

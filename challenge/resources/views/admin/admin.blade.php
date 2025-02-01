@@ -65,7 +65,7 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form method="POST" action="{{ route('evento.update', $dato->id) }}">
+                                            <form method="POST" action="{{ route('admin.update', $dato->id) }}">
                                                 @csrf
                                                 @method('PUT')
                                                 <div class="mb-3">
@@ -119,7 +119,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <p>¿Estás seguro de que quieres eliminar este evento?</p>
-                                            <form method="POST" action="{{ route('evento.destroy', $dato->id) }}">
+                                            <form method="POST" action="{{ route('admin.destroy', $dato->id) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Eliminar</button>
