@@ -14,9 +14,7 @@ use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
-    /**
-     * Display the registration view.
-     */
+
     public function create(): View
     {
         return view('auth.register');
@@ -31,20 +29,28 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'image' => ['required', 'image', 'mimes:jpg,jpeg,png,gif'],
+            'localidad' => ['required', 'string', 'max:255'],
         ]);
+
+        
+        $imagePath = $request->file('image')->store('profile_images', 'public');
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'rol'=>2,
+            'image' => $imagePath, 
+            'localidad' =>$request->localdiad
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect(route('evento.inicio', absolute: false));
     }
 }

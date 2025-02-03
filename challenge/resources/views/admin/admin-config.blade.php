@@ -12,7 +12,8 @@
         {{ session('error') }}
     </div>
 @endif
-
+<h1 class="titulo-style-admin-config">Configura el estilo de la Aplicacion</h1>
+<h2 class="fondo-pantalla-style-admin-config">Configure el fondo de pantalla de la Aplicaicon</h2>
 <form action="{{ route('admin.addimg') }}" method="POST" enctype="multipart/form-data" class="upload-form">
     @csrf
     <label for="backgroundImage" class="upload-label">

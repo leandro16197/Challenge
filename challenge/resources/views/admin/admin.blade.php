@@ -15,11 +15,20 @@
             </div>
         @endif
 
-        <div class="tabla-evento">          
+        <div class="tabla-evento">
             <div class="table-responsive">
-                <a href="/administracion/addEvent" class="agregar-evento btn btn-primary">
-                    <i class="fas fa-plus-circle"></i> Agregar Evento
-                </a>  
+                <div class="addEvento">
+                    <a href="/administracion/addEvent" class="agregar-evento btn btn-primary">
+                        <i class="fas fa-plus-circle"></i> Agregar Evento
+                    </a>
+                </div>
+                <div class="buscador mb-3">
+                    <form method="GET" action="{{ route('admin.admin') }}" class="search-form">
+                        <input type="text" name="search" value="{{ request('search') }}" class="form-control"
+                            placeholder="Buscar por nombre">
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    </form>
+                </div>
                 <table class="table tabla-style table-bordered table-hover shadow-lg rounded">
                     <thead>
                         <tr>
@@ -39,12 +48,12 @@
                                 <td>{{ $dato->capacidad_maxima }}</td>
                                 <td>
                                     <div class="d-flex">
-                                  
+
                                         <button class="btn btn-primary" data-bs-toggle="modal"
                                             data-bs-target="#eventoModalEditar{{ $dato->id }}">
                                             <i class="fas fa-pencil-alt"></i>
                                         </button>
-                                  
+
                                         <button class="btn-eliminar btn btn-danger" data-bs-toggle="modal"
                                             data-bs-target="#eventoModalEliminar{{ $dato->id }}">
                                             <i class="fas fa-trash"></i>
@@ -80,24 +89,24 @@
                                                 <div class="mb-3">
                                                     <label for="fecha_evento" class="form-label">Fecha del Evento</label>
                                                     <input type="datetime-local" class="form-control" id="fecha_evento"
-                                                        name="fecha_evento"
-                                                        value="{{$dato->fecha_evento }}"
-                                                        required>
+                                                        name="fecha_evento" value="{{ $dato->fecha_evento }}" required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="localidad" class="form-label">Localidad</label>
-                                                    <input type="text" class="form-control" id="localidad" name="localidad"
-                                                        value="{{ $dato->localidad }}" required>
+                                                    <input type="text" class="form-control" id="localidad"
+                                                        name="localidad" value="{{ $dato->localidad }}" required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="direccion" class="form-label">Dirección</label>
-                                                    <input type="text" class="form-control" id="direccion" name="direccion"
-                                                        value="{{ $dato->direccion }}" required>
+                                                    <input type="text" class="form-control" id="direccion"
+                                                        name="direccion" value="{{ $dato->direccion }}" required>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="capacidad_maxima" class="form-label">Capacidad Máxima</label>
+                                                    <label for="capacidad_maxima" class="form-label">Capacidad
+                                                        Máxima</label>
                                                     <input type="number" class="form-control" id="capacidad_maxima"
-                                                        name="capacidad_maxima" value="{{ $dato->capacidad_maxima }}" required>
+                                                        name="capacidad_maxima" value="{{ $dato->capacidad_maxima }}"
+                                                        required>
                                                 </div>
                                                 <button type="submit" class="btn btn-primary">Actualizar</button>
                                             </form>
@@ -112,7 +121,8 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="eventoModalEliminarLabel{{ $dato->id }}">Eliminar
+                                            <h5 class="modal-title" id="eventoModalEliminarLabel{{ $dato->id }}">
+                                                Eliminar
                                                 Evento</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
@@ -133,6 +143,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-center">
+                    {{ $eventos->links() }}
+                </div>
             </div>
         </div>
     </div>

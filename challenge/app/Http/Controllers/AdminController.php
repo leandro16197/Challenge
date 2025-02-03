@@ -9,15 +9,21 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-   public function index()
+   public function index(Request $request)
    {
-      $evento = eventoModel::all();
+      $search = $request->input('search', '');
+      $evento = eventoModel::orderBy('id', 'desc')
+         ->where('nombre', 'like', '%' . $search . '%')
+         ->paginate(5);
+
+
       foreach ($evento as $eventoItem) {
          $eventoItem->fecha_evento = \Carbon\Carbon::parse($eventoItem->fecha_evento)->format('d/m/y');
       }
 
       return view('admin.admin', [
-         'eventos' => $evento
+         'eventos' => $evento,
+         'search' => $search, 
       ]);
    }
 
@@ -99,17 +105,18 @@ class AdminController extends Controller
       if ($request->hasFile('backgroundImage')) {
          $file = $request->file('backgroundImage');
          $path = $file->store('backgrounds', 'public');
-         $img=imgModel::create([
-            'imagen_path'=>$path,
+         $img = imgModel::create([
+            'imagen_path' => $path,
          ]);
 
          return redirect()->back()->with('success', 'Fondo Actualizado.');
       }
-      
-    return redirect()->back()->with('error', 'No se actualizó.');
+
+      return redirect()->back()->with('error', 'No se actualizó.');
    }
 
-   public function getBackground(){
+   public function getBackground()
+   {
       $background = imgModel::latest()->first();
       return $background ? $background->imagen_path : 'img/fondo.jpg';
    }

@@ -2,6 +2,14 @@
 
 @section('content')
 <div class="tabla-evento">
+    <div class="mb-3">
+        <form method="GET" action="{{ route('evento.inicio') }}" class="search-form">
+            <input type="text" name="search" value="{{ request('search') }}" class="form-control" placeholder="Buscar por nombre">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+    </div>
+    
+    
     <table class="table">
         <thead>
             <tr>
@@ -30,6 +38,9 @@
             @endforeach
         </tbody>
     </table>
+     <div class="d-flex justify-content-center">
+        {{ $evento->links() }}
+    </div>
 </div>
 
 @foreach ($evento as $dato)
@@ -48,7 +59,6 @@
                 <div class="formulario-inscripcion">
                     <form action="{{ route('evento.reservar', $dato->id) }}" method="post">
                         @csrf
-                        <!-- Campo oculto para enviar el ID del evento -->
                         <input type="hidden" name="evento_id" value="{{$dato->id}}">
 
                         <div class="mb-3">
@@ -68,9 +78,5 @@
     </div>
 </div>
 @endforeach
-
-
-
-
-
 @endsection
+

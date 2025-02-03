@@ -15,15 +15,14 @@ class reservas extends Model
         'cantidad'
     ];
   
-   // relación inversa OneToMany: Una reserva pertenece a un solo evento
-   public function evento()
-   {
-       return $this->belongsTo(EventoModel::class, 'evento_id');
-   }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
-   // relación inversa OneToMany: Una reserva pertenece a un solo usuario
-   public function usuario()
-   {
-       return $this->belongsTo(User::class, 'user_id');
-   }
+
+    public function evento()
+    {
+        return $this->belongsTo(eventoModel::class);
+    }
 }
