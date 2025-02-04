@@ -269,15 +269,24 @@ h2 {
         width: 90% !important;
     }
 }
-@media (max-width: 800px) {
-    .titulo-style-admin-config{
-        font-size: 1.6rem;
-        margin-bottom: 4%;
+    @media (max-width: 800px) {
+        .titulo-style-admin-config{
+            font-size: 1.6rem;
+            margin-bottom: 4%;
+        }
+        .fondo-pantalla-style-admin-config{
+            font-size: 1.2rem;
+        }  
+        .contenedor-admin {
+            width: 90%;
+            margin: 0; 
+            justify-self: center;
+            align-items: center; 
+        }
+        .delete-user{
+            margin-left: 0;
+        }
     }
-    .fondo-pantalla-style-admin-config{
-        font-size: 1.2rem;
-    }
-}
 @media (max-width: 990px) {
     .table-responsive {
         width: 100% !important ;
@@ -310,4 +319,8 @@ h2 {
 .buscador{
     margin-top: 1%;
     margin-left: 2%;
+}
+
+.delete-user{
+    margin-left: 5px;
 }

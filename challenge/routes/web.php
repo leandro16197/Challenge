@@ -19,7 +19,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/administracion/addEvent', [AdminController::class, 'addEvent'])->name('admin.addEvent');
         Route::post('/administracion/addEvent', [AdminController::class, 'store'])->name('admin.store');
         Route::get('/administracion/config', [AdminController::class, 'config'])->name('admin.config');
-        Route::post('/administracion/config', [AdminController::class, 'addImgBackground'])->name('admin.addimg');   
+        Route::post('/administracion/config', [AdminController::class, 'addImgBackground'])->name('admin.addimg');  
+        Route::get('/administracion/usuarios',[AdminController::class,'getUsers'])->name('admin.users');
+        Route::put('/administracion/usuarios/{id}', [AdminController::class, 'updateRol'])->name('admin.updateUsuario');
+        Route::delete('/administracion/usuarios/{id}', [AdminController::class, 'deleteUser'])->name('admin.destroyUsuario');
+        Route::delete('/administracion/usuarios/{id}', [AdminController::class, 'deleteUser'])->name('admin.deleteUsuario');
+
     });
     Route::get('/',[EventoController::class,'index'])->name('evento.inicio');
     Route::post('/evento/{evento}/reservar', [EventoController::class, 'reservar'])->name('evento.reservar');

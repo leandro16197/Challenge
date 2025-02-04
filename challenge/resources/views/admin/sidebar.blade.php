@@ -12,7 +12,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="sidebar-li-text nav-link text-white">
+                    <a class="sidebar-li-text nav-link text-white" href="{{ route('admin.users') }}">
                         <i class="fas fa-users"></i> Usuarios
                     </a>
                 </li>              

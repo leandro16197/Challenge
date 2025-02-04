@@ -3,32 +3,46 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ReservaConfirmacion;
+use App\Mail\ReservaCanceladaMail;
 use App\Models\eventoModel;
 use App\Models\reservas;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 class EventoController extends Controller
 {
-    function index(Request $request)
-    {
-        $search = $request->input('search', '');
+    public function index(Request $request)
+{
+    $search = $request->input('search', '');
+    $search = htmlspecialchars($search, ENT_QUOTES, 'UTF-8'); // Evita XSS
 
-        $evento = eventoModel::orderBy('id', 'desc')
-            ->where('nombre', 'like', '%' . $search . '%')
-            ->paginate(5);
+    $validator = Validator::make(['search' => $search], [
+        'search' => 'nullable|string|max:255',
+    ]);
 
-        foreach ($evento as $eventoItem) {
-            $eventoItem->fecha_evento = \Carbon\Carbon::parse($eventoItem->fecha_evento)->format('d/m/y');
-        }
-
-        return view('evento.tabla-evento', [
-            'evento' => $evento,
-            'search' => $search,
-        ]);
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
     }
+
+    $evento = eventoModel::orderBy('id', 'desc')
+        ->where('nombre', 'like', '%' . $search . '%')
+        ->paginate(5);
+
+    $evento->transform(function ($eventoItem) {
+        $eventoItem->fecha_evento = Carbon::parse($eventoItem->fecha_evento)->format('d/m/y');
+        return $eventoItem;
+    });
+
+    return view('evento.tabla-evento', [
+        'evento' => $evento,
+        'search' => $search,
+    ]);
+}
+
     function reservar(Request $request)
     {
         $request->merge([
@@ -95,12 +109,23 @@ class EventoController extends Controller
 
     public function deleteReserva($id)
     {
-        $reserva = Reservas::find($id);
-        if ($reserva) {
-            $reserva->delete();
-            return redirect()->back()->with('success', 'Reserva eliminada correctamente.');
-        } else {
+        if (!ctype_digit($id)) {
+            return redirect()->back()->with('error', 'ID de reserva no válido.');
+        }
+    
+        $reserva = Reservas::find((int) $id);
+    
+        if (!$reserva) {
             return redirect()->back()->with('error', 'La reserva no existe.');
         }
+        $user = Auth::user();
+        if ($reserva->user_id !== $user->id) {
+            return redirect()->back()->with('error', 'No tienes permiso para eliminar esta reserva.');
+        }
+        
+        $reserva->delete();
+        Mail::to($user->email)->send(new ReservaCanceladaMail($reserva));
+    
+        return redirect()->back()->with('success', 'Reserva eliminada correctamente y correo enviado.');
     }
 }
