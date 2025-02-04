@@ -48,12 +48,11 @@ class User extends Authenticatable
         ];
     }
 
-    // relación OneToMany
+
     public function reservas()
     {
         return $this->hasMany(Reservas::class, 'user_id');
     }
-    // relación ManyToMany con Evento
     public function eventos()
     {
         return $this->belongsToMany(EventoModel::class, 'reservas', 'user_id', 'evento_id')

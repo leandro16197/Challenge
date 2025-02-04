@@ -27,30 +27,45 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+    
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'image' => ['required', 'image', 'mimes:jpg,jpeg,png,gif'],
+            'image' => ['nullable','image', 'mimes:jpg,jpeg,png,gif'],
             'localidad' => ['required', 'string', 'max:255'],
         ]);
+    
 
+        $sanitizedData = $request->only(['name', 'email', 'localidad']);
+        $sanitizedData['name'] = strip_tags($sanitizedData['name']); 
+        $sanitizedData['localidad'] = strip_tags($sanitizedData['localidad']); 
+    
+       
+        $sanitizedData['email'] = strtolower($sanitizedData['email']);
         
-        $imagePath = $request->file('image')->store('profile_images', 'public');
+ 
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('profile_images', 'public');
+        } else {
+            $imagePath = null; 
+        }
 
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
+            'name' => $sanitizedData['name'],
+            'email' => $sanitizedData['email'],
             'password' => Hash::make($request->password),
-            'rol'=>2,
-            'image' => $imagePath, 
-            'localidad' =>$request->localdiad
+            'rol' => 2,
+            'image' => $imagePath,
+            'localidad' => $sanitizedData['localidad'],
         ]);
-
+    
+     
         event(new Registered($user));
-
+    
+       
         Auth::login($user);
-
+    
         return redirect(route('evento.inicio', absolute: false));
     }
 }
