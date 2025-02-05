@@ -18,7 +18,7 @@ class AdminUser extends Seeder
             'name' => 'Admin User',
             'email' => 'admin@example.com',
             'rol' => 1,
-            'image' => 'default_admin.png',
+            'image' =>null,
             'localidad' => 'Tandil',
             'password' => Hash::make('pasword123'), 
             'created_at' => now(),
