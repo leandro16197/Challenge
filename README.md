@@ -16,3 +16,9 @@ cd challenge
     docker-compose exec laravel-challenge php artisan db:seed
 ### 5. Access the application
     http://localhost:8000
+### 6. Administrator Access
+
+To access the application as an administrator, use the following credentials:
+
+- **Email**: admin@example.com
+- **Password**: password123
